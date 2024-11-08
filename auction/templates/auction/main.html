@@ -10,17 +10,43 @@
 {% block body %} 
 
 
-    {% for Api_info in API %}
-    <div class="item">
-        <img src="{{ Api_info.img_src }}" alt="Item Image">
-        <div class="description" style="background-color: {{ Api_info.color }}">
-            <p class="name_item">{{ Api_info.item_id }}</p>  
-            <p class="price">{{ Api_info.lot }}</p>          
-        </div>
-    </div>
-    {% endfor %}
+<div id="lots-container">
+
+</div>
 
 
+
+<script>
+    async function fetchLots() {
+        try {
+            const response = await fetch('fetch_lots_data');
+            const lots = await response.json();
+
+            // Очищаем контейнер перед обновлением
+            const container = document.getElementById('lots-container');
+            container.innerHTML = '';
+
+            // Динамически создаем элементы для каждого лота
+            lots.forEach(lot => {
+                const lotElement = document.createElement('div');
+                lotElement.className = 'item';
+                lotElement.innerHTML = `
+                    <img src="${lot.img_src}" alt="Item Image">
+                    <div class="description" style="background-color: ${lot.color}">
+                        <p class="name_item">${lot.item_id}</p>  
+                        <p class="price">${lot.lot}</p>          
+                    </div>
+                `;
+                container.appendChild(lotElement);
+            });
+        } catch (error) {
+            console.error('Ошибка при получении данных:', error);
+        }
+    }
+
+    // Запускаем функцию обновления каждые 3 секунды
+    setInterval(fetchLots, 3000);
+</script>
 
 <header>
 	<a href="http://127.0.0.1:8000/auction/profile_user"><button type="submit">Настройки профиля</button></a>

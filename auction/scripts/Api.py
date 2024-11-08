@@ -46,11 +46,11 @@ class ApiClient:
                 unit_price = int(price) / int(quantity)
 
                 if unit_price < (average_price * DISCOUNT_YELLOW):
-                    return {'lot':f'Ниже средней рыночной цены... \n ЛОТ: Количество:{quantity}, \n Цена:{price} ', 'color': 'yellow'}
+                    return {'lot':f'Ниже средней цены... \n ЛОТ: Количество:{quantity}, \n Цена:{price} ', 'color': 'yellow'}
                 elif unit_price < (average_price * DISCOUNT_GREEN):
-                    return {'lot':f'Ниже средней рыночной цены на 40%+ \n ЛОТ: Количество:{quantity}, \n Цена:{price} ', 'color': 'yellow'}
+                    return {'lot':f'Ниже средней цены на 40%+ \n ЛОТ: Количество:{quantity}, \n Цена:{price} ', 'color': 'yellow'}
 
-                return {'lot': f'Поиск выгодного лота... \n Средняя цена:{int(average_price)}', "color": 'red'}
+                return {'lot': f'Поиск лота... \n Средняя цена:{int(average_price)}', "color": 'red'}
         else:
             return {'lot': 'N/A', "color": 'unknown'}
 

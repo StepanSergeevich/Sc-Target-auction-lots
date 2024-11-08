@@ -66,7 +66,7 @@ ROOT_URLCONF = 'StalcraftAuction.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'authentication/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,6 +81,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'StalcraftAuction.wsgi.application'
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -91,7 +101,7 @@ DATABASES = {
         'NAME': 'postgres',  
         'USER': 'postgres',        
         'PASSWORD': '123', 
-        'HOST': 'db',          
+        'HOST': 'localhost',          
         'PORT': '5432',                 
     }
 }

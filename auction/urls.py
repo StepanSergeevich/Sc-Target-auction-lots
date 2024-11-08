@@ -1,4 +1,4 @@
-from .views import change_password
+from .views import change_password, fetch_lots_data
 from django.urls import path
 from . import views
 
@@ -9,4 +9,5 @@ urlpatterns = [
     path('profile_user/', views.profile_user, name='profile_user'), #Настройки провиля пользователя
     path('change_password/', change_password.as_view(), name='change_password'), #Смена пароля пользователя
     path('profile_user/choice_lots/', views.choice_lots, name='choice_lots'), #Настройки вывода лотов
+    path('main/fetch_lots_data/', fetch_lots_data, name='fetch_lots_data'),
 ]

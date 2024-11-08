@@ -20,8 +20,7 @@ div{
 }
 
 
-
-body {
+#lots-container{
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Создает 3 равные колонки */
     gap: 20px; /* Промежуток между элементами */

@@ -4,13 +4,16 @@ from channels.db import database_sync_to_async
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.http import JsonResponse
 from .models import ClientSelection
 from django.contrib import messages
 from django.shortcuts import render
 from .scripts.Api import ApiClient
 from .utils import LIST_ITEMS
 import asyncio
+import redis
 
+redis_client = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 # Выход с аккаунта 
 def logout_view(request):
@@ -76,8 +79,8 @@ def connect_data_base(request):
     return selection.selected_items
 
 
-# Обновление лотов на главной странице(Вывод страницы main)
-async def user_lots(request):
+async def fetch_lots_data(request):
+
     item_ids = await connect_data_base(request)
 
     async def fetch_lots_price(item_id):
@@ -87,9 +90,19 @@ async def user_lots(request):
 
     tasks = [fetch_lots_price(item_id) for item_id in item_ids]
     info_items_lots = await asyncio.gather(*tasks)
-    print(info_items_lots)
-    context = {'API':info_items_lots}
-    return render(request, 'auction/main.html', context = context)
+    redis_client.set('user_lots', str(info_items_lots))
+    cached_data = redis_client.get('user_lots')
+
+    if cached_data:
+        lots = eval(cached_data.decode('utf-8')) 
+        return JsonResponse(lots, safe=False)
+    
+    return JsonResponse([], safe=False)
+
+
+# Обновление лотов на главной странице(Вывод страницы main)
+def user_lots(request):
+    return render(request, 'auction/main.html')
 
 
 def main(request):
