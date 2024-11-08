@@ -1,0 +1,66 @@
+{% extends 'auction/base_main.html' %}
+
+{% block header %}
+
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'auction/css/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'auction/css/profile_user.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'auction/css/choice_lots.css' %}">
+{% endblock %}
+
+{% block body %} 
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form_profile">
+        <span style="font-size: 20px; color: white;">Личные данные</span>
+        <div>
+        {% for id, name in checkbox_values.items %}
+            <label class="lns-checkbox ml-2">
+                <input type="checkbox" name="selected_items" value="{{ id }}" class="item-checkbox"
+                    {% if id in selected_items %}checked{% endif %}>
+                <span>{{ name }}</span>
+            </label>
+        {% endfor %}
+        </div>
+        <button type="submit" name="choiced">Подтвердить изменения</button>
+    </div>
+</form>
+
+<header>
+	<a href="http://127.0.0.1:8000/auction/main"><button type="submit">На главную</button></a>
+    <a href="http://127.0.0.1:8000/auction/profile_user"><button type="submit">Настройки профиля</button></a>
+</header>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const checkboxes = document.querySelectorAll('.item-checkbox');
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const checkedCount = document.querySelectorAll('.item-checkbox:checked').length;
+            if (checkedCount > 6) {
+                // Используем SweetAlert2 для красивого уведомления
+                Swal.fire({
+                    title: 'Ошибка!',
+                    text: 'Вы можете выбрать не более 3 элементов.',
+                    icon: 'warning',
+                    confirmButtonText: 'Понял'
+                });
+                this.checked = false; // Снимаем отметку с последнего чекбокса
+            }
+            if (checkedCount < 3) {
+                // Используем SweetAlert2 для красивого уведомления
+                Swal.fire({
+                    title: 'Ошибка!',
+                    text: 'Должно быть выбрано хотя бы 2 элемента!',
+                    icon: 'warning',
+                    confirmButtonText: 'Понял'
+                });
+                this.checked = true; // Снимаем отметку с последнего чекбокса
+            }
+        });
+    });
+</script>
+
+{% endblock %}

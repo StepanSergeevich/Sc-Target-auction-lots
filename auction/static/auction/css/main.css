@@ -1,0 +1,125 @@
+html {
+    background-image: url('/static/authentication/images/background/background.png');
+    background-size: cover; /* Изображение будет масштабироваться, чтобы покрыть весь элемент */
+    background-repeat: no-repeat; /* Изображение не будет повторяться */
+}
+
+header{
+    color: #fff;
+    font-size: 14px;
+    top: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+div{
+    margin: 25px !important;
+}
+
+
+
+body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Создает 3 равные колонки */
+    gap: 20px; /* Промежуток между элементами */
+    padding: 20px; /* Отступы вокруг сетки */
+    margin-left: 500px;
+}
+
+div {
+    margin: 75px 60px 5px 60px;
+    padding: 15px;
+    border-radius: 15px; /* Округлые углы */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Тень для эффекта */
+    background-color: black; /* Фоновый цвет для элементов */
+    text-align: center; /* Выравнивание текста по центру */
+    font-family: "Arial", sans-serif;
+}
+
+
+
+
+h1 {
+    font-size: 30px; /* Размер шрифта для заголовка */
+    margin-bottom: 25px; /* Отступ снизу */
+}
+
+p {
+    font-size: 20px; /* Размер шрифта для обычного текста */
+    margin: 2px 0; /* Отступы сверху и снизу */
+}
+
+.lot {
+    font-size: 18px; /* Меньший размер шрифта для "Лот на 1 шт" */
+    color: white; /* Цвет текста для меньшего шрифта */
+}
+
+.average {
+    font-size: 18px; /* Меньший размер шрифта для "Лот на 1 шт" */
+    color: white; /* Цвет текста для меньшего шрифта */
+    margin-top: 20px; /* Отступ сверху для "Лот на 1 шт" */
+}
+
+header button{
+    float: left;
+    margin: 15px;
+    background-color: rgb(43, 37, 37);
+    border-radius: 10px;
+    padding: 8.6px;
+    cursor: pointer;
+    color: white;
+    font-style: italic;
+    font-size: 15px;
+}
+
+body{
+    margin-left: 400px;
+}
+
+.item{
+    background-color: white;
+    height: 280px;
+    width: 250px;
+}
+
+.description{
+    background-color: white;
+    height: 90px;
+    width: 170px;
+}
+
+.name_item{
+    color: black;
+}
+
+.price{
+    color: black;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer i {
+    color: red;
+}
+
+footer a {
+    color: #3c97bf;
+    text-decoration: none;
+}

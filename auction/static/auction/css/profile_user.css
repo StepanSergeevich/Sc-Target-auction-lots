@@ -1,0 +1,46 @@
+
+.form_profile{
+    background-color: red;
+    height: 100%;
+    max-width: 300px;
+}
+
+.form_profile .container{
+    margin: 25px;
+    color: white;
+}
+
+.form_profile button{
+    background-color: rgb(43, 37, 37);
+    border-radius: 10px;
+    padding: 8.6px;
+    cursor: pointer;
+    color: white;
+    font-style: italic;
+    font-size: 15px;
+}
+
+.error {
+    color: white;
+    font-size: 0.9em;
+    background-color: red !important;
+    margin-top: 0px;
+}
+
+form ul{
+    padding: 0px;
+}
+
+
+
+
+form li{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    list-style: none;
+}
+
+#id_old_password, #id_new_password2, #id_new_password1{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

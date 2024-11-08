@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+* {
+	box-sizing: border-box;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
+
+:root {
+  /* Base font size */
+  font-size: 15px;   
+  
+  /* Set neon color */
+  --neon-text-color: rgb(23, 138, 158);
+  --neon-border-color: rgb(23, 138, 158);
+}
+
+
+
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  background: #000;
+  min-height: 50vh;
+}
+
+
+/* Применяем стили только к элементу с ID site_tag */
+#site_tag {
+  font-family: sans-serif;
+  font-size: 1.6rem;
+  font-weight: 200;
+  font-style: italic;
+  color: black;
+  padding: 1.5rem;
+  border: 0.4rem solid #fff;
+  border-radius: 4rem;
+  text-transform: uppercase;
+  animation: flicker 1.5s infinite alternate;     
+}
+
+#site_tag::-moz-selection {
+  background-color: var(--neon-border-color);
+  color: var(--neon-text-color);
+}
+
+#site_tag::selection {
+  background-color: var(--neon-border-color);
+  color: var(--neon-text-color);
+}
+
+#site_tag:focus {
+  outline: none;
+}
+
+/* Animate neon flicker */
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow:
+            -0.2rem -0.2rem 1rem #fff,
+            0.2rem 0.2rem 1rem #fff,
+            0 0 2rem var(--neon-text-color),
+            0 0 4rem var(--neon-text-color),
+            0 0 6rem var(--neon-text-color),
+            0 0 8rem var(--neon-text-color),
+            0 0 10rem var(--neon-text-color);
+        
+        box-shadow:
+            0 0 .5rem #fff,
+            inset 0 0 .5rem #fff,
+            0 0 2rem var(--neon-border-color),
+            inset 0 0 2rem var(--neon-border-color),
+            0 0 4rem var(--neon-border-color),
+            inset 0 0 4rem var(--neon-border-color);        
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+        box-shadow: none;
+    }    
+}
+
+body {
+	background-image: url('/static/authentication/images/background/aboba.jpg');
+    background-size: cover; /* Изображение будет масштабироваться, чтобы покрыть весь элемент */
+    background-repeat: no-repeat; /* Изображение не будет повторяться */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 80vh;
+	margin: -20px 0 50px;
+}
+
+h1 {
+	font-family: 'Dancing Script', cursive;
+	font-weight: bold;
+	margin: 0;
+}
+
+h2 {
+	font-family: 'Dancing Script', cursive;
+	text-align: center;
+}
+
+p {
+	font-family: 'Dancing Script', cursive;
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+
+span {
+	font-family: 'Dancing Script', cursive;
+	font-size: 12px;
+}
+
+a {
+	font-family: 'Dancing Script', cursive;
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+
+button {
+	font-family: 'Dancing Script', cursive;
+    cursor: pointer;
+	border-radius: 20px;
+	border: 1px solid #2b75ff;
+	background-color: #2b75ff;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+.container {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 800px;
+	max-width: 100%;
+	min-height: 600px;
+}
+
+.form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
+}
+
+.container.right-panel-active .sign-in-container {
+	transform: translateX(100%);
+}
+
+.sign-up-container {
+	left: 0;
+	width: 50%;
+	opacity: 0;
+	z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+	transform: translateX(100%);
+	opacity: 1;
+	z-index: 5;
+	animation: show 0.6s;
+}
+
+@keyframes show {
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
+}
+
+.overlay-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+}
+
+.container.right-panel-active .overlay-container{
+	transform: translateX(-100%);
+}
+
+.overlay {
+	background: #17a5c9;
+	background: -webkit-linear-gradient(to right, #17a5c9, #17a5c9);
+	background: linear-gradient(to right, #17a5c9, #17a5c9);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+	color: #FFFFFF;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+  	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+  	transform: translateX(50%);
+}
+
+.overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+	transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+	transform: translateX(0);
+}
+
+.overlay-right {
+	right: 0;
+	transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+	transform: translateX(20%);
+}
+
+.social-container {
+	margin: 20px 0;
+}
+
+.social-container a {
+	border: 1px solid #DDDDDD;
+	background-color: #17a5c9;
+	border-radius: 50%;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 5px;
+	height: 40px;
+	width: 40px;
+}
+
+
+
+
+footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer i {
+    color: red;
+}
+
+footer a {
+    color: #3c97bf;
+    text-decoration: none;
+}
+
+.messages{
+	height: 80px;
+	width: 100%;
+	display:table-cell;
+	text-align:center;
+	padding:3px 10px;
+	color: red;
+	font-size: 24px;
+}
+
+
+.wrong_register{
+	height: 180px;
+	width: 100%;
+	display:table-cell;
+	text-align:center;
+	padding:3px 10px;
+	color: red;
+	font-size: 24px;
+}
+
+.wrong_register{
+	margin-top: 50px;
+}
+
+.wrong_register p{
+	color: red;
+	font-size: 14px;
+}
+
+
+
+.messages span{
+	color: red;
+	font-size: 14px;
+}
+
+.virifity form{
+	width: 500px;
+	height: 400px;
+	border-radius: 30px;
+}

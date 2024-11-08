@@ -1,0 +1,89 @@
+{% extends 'auction/base_main.html' %}
+
+{% block header %}
+
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'auction/css/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'auction/css/profile_user.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock %}
+
+{% block body %} 
+<div class="form_profile">
+    <span style="font-size: 20px; color: white;">Личные данные</span>
+    <div class="container">
+        <span>Логин: {{ username }}</span>
+    </div>
+
+    <div class="container">
+        <span>Почта: {{ email }}</span>
+    </div>
+
+    <form action="{% url 'change_password' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Сменить пароль</button>
+    </form>
+
+    <form action="{% url 'choice_lots' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" style="margin-top: 20px;">Настройка лотов</button>
+    </form>
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" style="margin-top: 20px;">Выйти из аккаунта</button>
+    </form>
+
+</div>
+
+
+<header>
+	<a href="http://127.0.0.1:8000/auction/main"><button type="submit">На главную</button></a>
+</header>
+
+<script>
+    const checkboxes = document.querySelectorAll('.item-checkbox');
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const checkedCount = document.querySelectorAll('.item-checkbox:checked').length;
+            if (checkedCount > 3) {
+                Swal.fire({
+                    title: 'Ошибка!',
+                    text: 'Вы можете выбрать не более 3 элементов.',
+                    icon: 'warning',
+                    confirmButtonText: 'Понял'
+                });
+                this.checked = false; // Снимаем отметку с последнего чекбокса
+            }
+            if (checkedCount < 2) {
+                Swal.fire({
+                    title: 'Ошибка!',
+                    text: 'Должно быть выбрано хотя бы 2 элемента!',
+                    icon: 'warning',
+                    confirmButtonText: 'Понял'
+                });
+                this.checked = true; // Снимаем отметку с последнего чекбокса
+            }
+        });
+    });
+
+    // Обработка сообщений из Django
+    {% if messages %}
+        window.onload = function() {
+            {% for message in messages %}
+                Swal.fire({
+                    title: 'Сообщение',
+                    text: "{{ message }}",
+                    icon: 'info',
+                    confirmButtonText: 'ОК'
+                });
+            {% endfor %}
+        }
+    {% endif %}
+</script>
+
+
+{% endblock %}
