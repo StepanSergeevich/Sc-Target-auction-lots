@@ -22,11 +22,11 @@
             const response = await fetch('fetch_lots_data');
             const lots = await response.json();
 
-            // Очищаем контейнер перед обновлением
+
             const container = document.getElementById('lots-container');
             container.innerHTML = '';
 
-            // Динамически создаем элементы для каждого лота
+
             lots.forEach(lot => {
                 const lotElement = document.createElement('div');
                 lotElement.className = 'item';
@@ -44,8 +44,8 @@
         }
     }
 
-    // Запускаем функцию обновления каждые 3 секунды
-    setInterval(fetchLots, 3000);
+
+    setInterval(fetchLots, 1800);
 </script>
 
 <header>

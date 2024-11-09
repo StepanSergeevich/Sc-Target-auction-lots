@@ -1,5 +1,5 @@
 from django.shortcuts import redirect
-
+from django.shortcuts import render
 
 # Функция проверки авторизации пользователя
 class LoginRequiredMiddleware:
@@ -8,9 +8,12 @@ class LoginRequiredMiddleware:
 
 
     def __call__(self, request):
-        print(request.path)
+
         if not request.user.is_authenticated and request.path in ['/auction/main/', '/auction/profile_user/']:
             return redirect('http://127.0.0.1:8000/auth/authentication')
+        
         if request.user.is_authenticated and request.path in ['/auth/authentication', '/auth/confirmation']:
             return redirect('http://127.0.0.1:8000/auction/main')
+        
         return self.get_response(request)
+

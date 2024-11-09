@@ -12,8 +12,8 @@ from .scripts.Api import ApiClient
 from .utils import LIST_ITEMS
 import asyncio
 import redis
-
 redis_client = redis.StrictRedis(host='localhost', port=6379, db=0)
+
 
 # Выход с аккаунта 
 def logout_view(request):
@@ -28,21 +28,24 @@ def profile_user(request):
     context = {'username': username, 'email': email}
     return render(request, 'auction/profile_user.html', context)
 
+
 # Настройки вывода Лотов
 def choice_lots(request):
-
-    if request.method == 'POST':
-        if 'choiced' in request.POST:
+    if request.method == 'POST' and 'choiced' in request.POST:
+        
+        try:
             selected_items = request.POST.getlist('selected_items')
             ClientSelection.objects.update_or_create(client_id = request.user, defaults={'selected_items': selected_items})
             messages.success(request, 'Список лотов изменён!')
-            return render(request, 'auction/profile_user.html')
+            return render(request, 'auction/profile_user.html', context={'username': request.user.email, 'email': request.user.username})
+        
+        except:
+            return render(request, 'auction/fail.html')
         
     checkbox_values = LIST_ITEMS
     client_selection = ClientSelection.objects.filter(client_id=request.user).first()
-    selected_items = client_selection.selected_items if client_selection else []
+    selected_items = client_selection.selected_items if client_selection else [] 
     return render(request, 'auction/choice_lots.html', {'selected_items': selected_items, 'checkbox_values': checkbox_values,})
-
 
 
 # Смена пароля
@@ -58,28 +61,33 @@ class change_password(PasswordChangeView):
         
 
     def form_invalid(self, form):
-        if self.request.method == 'POST':
-            if 'change' in self.request.POST:
+        if self.request.method == 'POST' and 'change' in self.request.POST:
                 user = self.request.user 
                 old_password = form.cleaned_data.get('old_password')
 
                 if not user.check_password(old_password):
                     form.add_error('new_password2', 'Старый пароль неверен.')
 
-                return super().form_invalid(form)
-            
         return super().form_invalid(form)
             
-
 
 # Подключение к БД
 @database_sync_to_async
 def connect_data_base(request):
-    selection = ClientSelection.objects.get(client_id=request.user)
-    return selection.selected_items
+        try:
+            selection = ClientSelection.objects.get(client_id=request.user)
+            if selection.selected_items  :
+                return selection.selected_items  
+            
+            else:
+                return ["y40kk", "olz36", "55621", "z301y", "gn975", "4q7pl"]
+        except:
+            return render(request, 'auction/fail.html')
 
 
-async def fetch_lots_data(request):
+
+# Обновление лотов на главной странице
+async def fetch_lots_data(request): 
 
     item_ids = await connect_data_base(request)
 
@@ -97,13 +105,9 @@ async def fetch_lots_data(request):
         lots = eval(cached_data.decode('utf-8')) 
         return JsonResponse(lots, safe=False)
     
-    return JsonResponse([], safe=False)
+    return render(request, 'auction/fail.html')
 
 
-# Обновление лотов на главной странице(Вывод страницы main)
-def user_lots(request):
-    return render(request, 'auction/main.html')
-
-
+# Главная страница
 def main(request):
     return render(request, 'auction/main.html')

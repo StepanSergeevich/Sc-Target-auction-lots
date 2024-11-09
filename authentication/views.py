@@ -16,6 +16,7 @@ def authentication(request):
     login_form = LoginForm(request.POST or None)
 
     if request.method == 'POST':
+        
         if 'login' in request.POST:  
             if login_form.is_valid():
                 username = login_form.cleaned_data['username']
@@ -48,7 +49,7 @@ def authentication(request):
             
             else:
                 messages.error(request, 'Ошибки регистрации:', extra_tags='wrong_register')
-                for field, errors in form.errors.items():
+                for _ , errors in form.errors.items():
                     for error in errors:
                         messages.error(request, f"{error}", extra_tags='wrong_register')
     
@@ -57,27 +58,25 @@ def authentication(request):
 
 # Верификация email 
 def verifity_email(request):
-    if request.method == 'POST':
-        if 'verify_code' in request.POST:  
-            code = request.POST.get('code')
+    if request.method == 'POST' and 'verify_code' in request.POST:
+        code = request.POST.get('code')
 
-            try:
-                pending_user = PendingUser.objects.get(confirmation_code=code)
+        try:
+            pending_user = PendingUser.objects.get(confirmation_code=code)
+            user = User.objects.create_user(
+                username=pending_user.username,
+                email=pending_user.email,
+                password=pending_user.password  
+            )
+            ClientSelection.objects.create(client_id=user, selected_items=["y40kk", "olz36", "55621", "z301y", "gn975", "4q7pl"])
+            user = authenticate(request, username=pending_user.username, password=pending_user.password)
+            login(request, user)
+            pending_user.delete()
 
+            return redirect('http://127.0.0.1:8000/auction/main')
 
-                user = User.objects.create_user(
-                    username=pending_user.username,
-                    email=pending_user.email,
-                    password=pending_user.password  
-                )
-                ClientSelection.objects.create(client_id=user, selected_items=["y40kk", "olz36", "55621", "z301y", "gn975", "4q7pl"])
-
-                pending_user.delete()
-
-                return redirect('http://127.0.0.1:8000/auction/main')
-
-            except PendingUser.DoesNotExist:
-                messages.error(request, "Неверный код подтверждения. \n Пожалуйста, попробуйте снова.", extra_tags='verifity_error')
+        except PendingUser.DoesNotExist:
+            messages.error(request, "Неверный код подтверждения. \n Пожалуйста, попробуйте снова.", extra_tags='verifity_error') 
 
     return render(request, 'authentication/confirmation_sent.html')
 
