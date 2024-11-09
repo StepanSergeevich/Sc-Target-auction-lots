@@ -38,7 +38,7 @@ form {
     flex-direction: column; /* Расположение элементов в колонку */
 }
 
-input[type="email"], #id_new_password1, #id_new_password2 {
+input[type="email"], input[type="text"], #id_new_password1, #id_new_password2 {
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
@@ -46,7 +46,11 @@ input[type="email"], #id_new_password1, #id_new_password2 {
     transition: border-color 0.3s;
 }
 
-input[type="email"]:focus {
+.error span{
+    font-size: 13px !important;
+}
+
+input[type="email"]:focus, input[type="text"]:focus{
     border-color: #007bff; /* Цвет рамки при фокусе */
     outline: none;
 }

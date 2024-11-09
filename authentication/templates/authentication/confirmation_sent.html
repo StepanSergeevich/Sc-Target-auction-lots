@@ -1,31 +1,48 @@
-{% extends 'authentication/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block header %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Восстановление пароля</title>
+  {% load static %}
+  <!-- Favicons -->
+  <link rel="stylesheet" type="text/css" href="{% static 'authentication/css/form.css' %}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2 class="form-email-h2">Введите код подстверждения</h2>
+        <div class="form-wrap">
+          
+            <form method="POST" action="{% url 'confirmation' %}">
+                {% csrf_token %}
+                <input type="text" name="code" required>
+                <button type="submit" name="verify_code" style="margin-top: 20px;">Подтвердить</button>
+                <div class="error" style=" border-radius: 25px; padding: 25px; height: 50px;">
+                
+                    {% for message in messages %}
+                        {% if 'verifity_error' in message.tags %}
+                            <span style="color: red; margin-top: 25px; font-size: 20px;">{{ message }}</span>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    
+            </form>
+            <button class="btn"><i class="fa fa-facebook"></i><a href="{% url 'authentication' %}">Назад к авторизации</a></button>
+
+    </div>
+       
+</body>
+
+</html>
 
 
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'authentication/css/authentication.css' %}">
-
-{% endblock %}
-
-{% block body %} 
-<div class="virifity">
-<form method="POST" action="{% url 'confirmation' %}">
-    {% csrf_token %}
-    <label for="code" style="margin-bottom: 20px;">Введите код подтверждения:</label>
-    <input type="text" name="code" required>
-    <button type="submit" name="verify_code" style="margin-top: 20px;">Подтвердить</button>
-</form>
 </div>
 
-<div class="error" style=" border-radius: 25px; padding: 25px; margin-top: 120px; height: 50px;">
-{% for message in messages %}
-    {% if 'verifity_error' in message.tags %}
-        <span style="color: red; margin-top: 25px; font-size: 20px;">{{ message }}</span>
-    {% endif %}
-{% endfor %}
-</div>
-
-
-{% endblock %}
 
