@@ -132,6 +132,10 @@ a {
 	margin: 15px 0;
 }
 
+a {
+    text-decoration: none !important; /* Отключает подчеркивание для всех ссылок */
+}
+
 button {
 	font-family: 'Dancing Script', cursive;
     cursor: pointer;

@@ -39,7 +39,7 @@
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
             const checkedCount = document.querySelectorAll('.item-checkbox:checked').length;
-            if (checkedCount > 6) {
+            if (checkedCount > 9) {
                 // Используем SweetAlert2 для красивого уведомления
                 Swal.fire({
                     title: 'Ошибка!',

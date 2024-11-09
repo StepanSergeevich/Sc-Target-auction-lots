@@ -1,19 +1,23 @@
-{% extends 'auction/base_main.html' %}
-
-{% block header %}
-
 
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'auction/css/main.css' %}">
-{% endblock %}
-
-{% block body %} 
 
 
-<div id="lots-container">
 
+<div class="main_container">
+    <div class="leftside">
+        <button class="button"><a href="{% url 'profile_user' %}" class="button">Настройки</a></button>
+    </div>
+    <div id="lots-container">
+
+    </div>
+    <footer>
+        <p>
+            Created with <i class="fa fa-heart"></i> by
+            <a target="_blank" href="https://github.com/StepanSergeevich">Arhimiel</a>  
+        </p>
+    </footer>
 </div>
-
 
 
 <script>
@@ -32,8 +36,8 @@
                 lotElement.className = 'item';
                 lotElement.innerHTML = `
                     <img src="${lot.img_src}" alt="Item Image">
-                    <div class="description" style="background-color: ${lot.color}">
-                        <p class="name_item">${lot.item_id}</p>  
+                    <p class="name_item">${lot.item_id}</p>  
+                    <div class="description" style="color: ${lot.color}; box-shadow: 0px 0px 9px 9px ${lot.color}">
                         <p class="price">${lot.lot}</p>          
                     </div>
                 `;
@@ -44,12 +48,6 @@
         }
     }
 
-
     setInterval(fetchLots, 1800);
 </script>
 
-<header>
-	<a href="http://127.0.0.1:8000/auction/profile_user"><button type="submit">Настройки профиля</button></a>
-</header>
-
-{% endblock %}
