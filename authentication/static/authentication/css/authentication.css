@@ -135,11 +135,12 @@ a {
 button {
 	font-family: 'Dancing Script', cursive;
     cursor: pointer;
-	border-radius: 20px;
+	border-radius: 5px;
 	border: 1px solid #2b75ff;
 	background-color: #2b75ff;
 	color: #FFFFFF;
 	font-size: 12px;
+	width: 100%;
 	font-weight: bold;
 	padding: 12px 45px;
 	letter-spacing: 1px;
