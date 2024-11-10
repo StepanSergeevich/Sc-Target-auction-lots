@@ -1,0 +1,172 @@
+
+body{
+    display: grid;
+    place-items: center; /* Центрирование по горизонтали и вертикали */
+    height: 100%; /* Высота контейнера на весь экран */
+    font-family: helvetica !important;
+	font-style: normal !important; 
+	font-weight: normal !important;
+}
+
+#near{
+    padding-bottom: 200px !important;
+}
+
+body .swal2-height-auto {
+    height: 100vh !important; 
+}
+
+#second-btn{
+    margin-top: 25px;
+}
+
+a {
+    text-decoration: none !important; /* Отключает подчеркивание для всех ссылок */
+}
+
+.lns-checkbox{
+    margin: 5px;
+}
+
+.lns-checkbox span{
+    font-size: 15px!important;
+}
+
+.checkboxes{
+    display: grid;         /* Включаем Grid */
+    place-items: center; 
+}
+
+.container_items_choice form{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 5 колонок одинаковой ширины */
+    grid-template-rows: auto 1fr; /* Автоматическая высота для блоков и оставшееся пространство для нижнего элемента */
+    gap: 10px; /* Промежуток между элементами */
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+    background-color: rgba(24, 24, 24, 0.5);
+    padding: 100px;
+}
+.container_items_choice label{
+    color: white;
+    width: 100%;
+    display: grid;         /* Включаем Grid */
+    place-items: left;   /* Центрируем текст */
+}
+
+#swal2-html-container{
+    color: rgb(0, 168, 0);
+}
+
+.swal2-popup{
+    box-shadow: 0 4px 20px rgb(0, 255, 0, 0.6);
+    color: rgb(0, 255, 234);
+    background-image: url('/static/auction/images/html/alert.jpg');
+    background-size: cover; /* Изображение будет масштабироваться, чтобы покрыть весь элемент */
+    background-repeat: no-repeat; /* Изображение не будет повторяться */
+}
+
+.swal2-confirm{
+    background-color: #2b75ff;
+}
+
+
+.name_items_check{
+    width: 100% !important;
+    margin: 5px 5px;
+	border-radius: 5px;
+	border: 1px solid #2b75ff;
+	background-color: #2b75ff;
+	color: #FFFFFF;
+	font-size: 12px;
+    padding: 15px 0px;
+	font-weight: bold;
+    text-align: center;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+    margin-bottom: 25px;
+}
+
+.container_items_choice .button_div{
+    grid-column: 1 / -1; /* Занять все 5 колонок */
+    display: grid;         /* Включаем Grid */
+    place-items: center; 
+}
+
+.container_items_choice .button_div .button{
+
+    width: 250px!important;
+
+}
+
+.container_form{
+    width: 250px; /* Может изменяться */
+    height: 100%; /* Может изменяться */
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+    background-color: rgba(24, 24, 24, 0.5);
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    flex-direction: column; /* Располагаем элементы вертикально */
+    text-align: center;
+    align-items: center;
+}
+
+.button a{
+    width: 100% !important;
+}
+
+.button {
+    width: 100% !important;
+    margin: 5px 5px;
+    cursor: pointer;
+	border-radius: 5px;
+	border: 1px solid #2b75ff;
+	background-color: #2b75ff;
+	color: #FFFFFF;
+	font-size: 12px;
+    padding: 15px 0px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+    
+}
+
+.button:active {
+	transform: scale(0.95);
+}
+
+.button:focus {
+	outline: none;
+}
+
+.button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+footer p {
+    margin: 10px 0;
+    font-size: 14px !important;
+}
+
+footer i {
+    color: red;
+}
+
+footer a {
+    color: #3c97bf;
+    text-decoration: none;
+}

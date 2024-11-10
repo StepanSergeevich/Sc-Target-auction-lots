@@ -1,15 +1,13 @@
-
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'auction/css/main.css' %}">
-
-
-
+<link rel="icon" href="/static/auction/images/html/favico.png" type="image/x-icon">
+<title>Main</title>
 <div class="main_container">
     <div class="leftside">
-        <button class="button"><a href="{% url 'profile_user' %}" class="button">Настройки</a></button>
+        <a class="button" style="text-align: center;" id="second-btn" href="{% url 'settings' %}">Настройки</a> 
+        <a class="button" style="text-align: center;" id="second-btn" href="{% url 'info_user' %}">Аккаунт</a> 
     </div>
     <div id="lots-container">
-
     </div>
     <footer>
         <p>
@@ -25,19 +23,15 @@
         try {
             const response = await fetch('fetch_lots_data');
             const lots = await response.json();
-
-
             const container = document.getElementById('lots-container');
             container.innerHTML = '';
-
-
             lots.forEach(lot => {
                 const lotElement = document.createElement('div');
                 lotElement.className = 'item';
                 lotElement.innerHTML = `
                     <img src="${lot.img_src}" alt="Item Image">
                     <p class="name_item">${lot.item_id}</p>  
-                    <div class="description" style="color: ${lot.color}; box-shadow: 0px 0px 9px 9px ${lot.color}">
+                    <div class="description" style="color: ${lot.color}; box-shadow: 0px 0px 7px 7px ${lot.color}">
                         <p class="price">${lot.lot}</p>          
                     </div>
                 `;

@@ -11,7 +11,6 @@
     --font-family-headings: "Inter", sans-serif;
   }
   
-
   
   .lns-checkbox {
     display: inline-flex;
@@ -92,3 +91,27 @@
     }
   }
   
+
+.button_div{
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+  background-color: rgba(24, 24, 24, 0.9);
+  width: 100%;
+}
+
+a{
+  align-items: center;
+  text-align: center;
+}
+
+
+#second-btn, #but{
+
+  margin: 25px 0px!important;
+
+}
+
+body{
+  font-family: helvetica !important;
+font-style: normal !important; 
+font-weight: normal !important;
+}

@@ -1,11 +1,15 @@
-html {
-    background-image: url('/static/authentication/images/background/background.png');
+
+body{
+    margin: 0px !important;
+    background-image: url('/static/auction/images/html/background.png');
     background-size: cover; /* Изображение будет масштабироваться, чтобы покрыть весь элемент */
     background-repeat: no-repeat; /* Изображение не будет повторяться */
 }
 
 body{
-    margin: 0px !important;
+    font-family: helvetica !important;
+	font-style: normal !important; 
+	font-weight: normal !important;
 }
 
 a {
@@ -23,6 +27,10 @@ header{
     z-index: 999;
 }
 
+body{
+    padding-bottom: 75px;
+}
+
 .button {
     margin: 5px 5px;
     cursor: pointer;
@@ -36,6 +44,7 @@ header{
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
+    
 }
 
 .button:active {
@@ -63,17 +72,15 @@ header{
     display: grid; /* Включаем Grid Layout */
     grid-template-columns: repeat(3, 1fr); /* Создаем 3 колонки равной ширины */
     grid-template-rows: repeat(3, auto); /* Создаем 3 строки, высота которых подстраивается под содержимое *//* Отступы между элементами */
-    margin-bottom: 35px;
 }
 
 
 .leftside{
-    background-color: black;
     display: flex; /* Используем flexbox для выравнивания элементов */
     flex-direction: column; /* Располагаем элементы вертикально */
     width: 100%;
     height: 100%;
-    opacity: 0.9; 
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 
@@ -113,30 +120,40 @@ header button{
 
 
 .item {
-    opacity: 0.9;
+    opacity: 0.89;
     text-align: center;
-    background-color: black;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     display: flex; /* Используем flexbox для выравнивания элементов */
     flex-direction: column; /* Располагаем элементы вертикально */
     overflow: hidden; /* Скрываем переполнение */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Тень для глубины */
-    margin: 20px 130px; /* Отступы вокруг блока */
+    margin: 10px 140px; /* Отступы вокруг блока */
     align-items: center;
+    padding-bottom: 20px;
+    background-size: cover; /* Изображение будет масштабироваться, чтобы покрыть весь элемент */
+    background-repeat: no-repeat; /* Изображение не будет повторяться */
+    background-image: url('/static/auction/images/html/item_background.jpg');
 }
 
 .item img {
     width: 75px; /* Изображение занимает всю ширину блока */
     height: 75px; /* Высота автоматически подстраивается */
     margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px !important;
+    background-size: cover; /* Изображение будет масштабироваться, чтобы покрыть весь элемент */
+    background-repeat: no-repeat; /* Изображение не будет повторяться */
+    background-image: url('/static/auction/images/html/backgroundlots.png');
 }
 
 
 .description {
+    min-height: 45px;
     margin-left: 13px;
     margin-right: 13px;
-    margin-top: 30px;
+    margin-top: 12px;
     text-align: center;
     border-radius: 10px;
     background-color: white;
@@ -144,13 +161,19 @@ header button{
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     padding: 15px; /* Отступы внутри описания */
     color: white; /* Цвет текста */
-    text-align: center; /* Выравнивание текста по центру */
+    align-items: center;
+    display: grid;
     opacity: 0.99;
 }
 
 .name_item {
+    text-align: center;
+    align-items: center;
+    min-height: 50px;
+    display: grid;
     font-size: 20px;
     margin-top: 10px;
+    width: 80%;
     color: white !important;
     border: solid 2px white;
     background-color: #2b75ff;

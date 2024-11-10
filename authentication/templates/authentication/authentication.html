@@ -1,19 +1,25 @@
 {% extends 'authentication/base.html' %}
-
 {% block header %}
-
-
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'authentication/css/authentication.css' %}">
-
+<title>Вход</title>
+<link rel="icon" href="/static/authentication/images/background/favico.png" type="image/x-icon">
 {% endblock %}
-
 {% block body %} 
 
-<h2 id="site_tag" contenteditable spellcheck="false">Stalcraft: [MMM Edition] Target Lots Auction</h1>
+<style type="text/css">
+    body {
+        height: 100vh; /* Высота на весь экран */
+        margin: 0; /* Убираем отступы */
+        background-image: url('/static/authentication/images/background/back5.jpg');
+        background-size: cover; /* Изображение будет масштабироваться, чтобы покрыть весь элемент */
+        background-repeat: no-repeat; /* Изображение не будет повторяться */
+    }
+</style>
+
+<h2 id="site_tag" contenteditable spellcheck="false">Target Auction Lots</h1>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-
         <form method="POST" action="{% url 'authentication' %}">
             {% csrf_token %}
             <h1 style="margin-bottom: 20px;">Регистрация</h1>
@@ -28,10 +34,9 @@
             {% endfor %}
             <button type="submit" style="margin-top: 25px;" name="register">Зарегистрироваться</button>
         </form>
-
     </div>
-    <div class="form-container sign-in-container">
 
+    <div class="form-container sign-in-container">
         <form method="POST" action="{% url 'authentication' %}">
             {% csrf_token %}
             <h1 style="margin-bottom: 20px;">Вход</h1>
@@ -46,7 +51,7 @@
             </div>
             <button type="submit" style="margin-top: 0px;" name="login">Войти</button>
             <hr style="width: 100%;">
-            <a href="http://127.0.0.1:8000/auth/password_reset" style="color:rgb(23, 0, 151); font-size: 15px; width: 100%; margin-top: 10px; background-color: rgb(0, 174, 255); color: white; padding: 15px; border-radius: 5px;">Восстановление пароля</a>
+            <a class="button" id="second-btn" href="{% url 'password_reset' %}">Восстановление пароля</a> 
         </form>
 
     </div>
@@ -68,13 +73,11 @@
                             <p>{{ message }}</p>
                         {% endif %}
                     {% endfor %}
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <script type='text/javascript'>
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
@@ -88,6 +91,5 @@
         container.classList.remove("right-panel-active");
     });
 </script>
-
 {% endblock %}
 

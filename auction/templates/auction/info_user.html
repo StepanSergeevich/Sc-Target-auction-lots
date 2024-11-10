@@ -1,0 +1,63 @@
+{% extends 'auction/form_base.html' %}
+{% block header %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'auction/css/forms.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'auction/css/info_user.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="icon" href="/static/auction/images/html/favico.png" type="image/x-icon">
+<title>Аккаунт</title>
+{% endblock %}
+
+{% block body %} 
+<style type="text/css">
+    body {
+        height: 100vh !important; /* Высота на весь экран */
+        margin: 0; /* Убираем отступы */
+        background-image: url('/static/auction/images/html/back5.jpg');
+        background-size: cover; /* Изображение будет масштабироваться, чтобы покрыть весь элемент */
+        background-repeat: no-repeat; /* Изображение не будет повторяться */
+    }
+</style>
+
+<div class="form-user">
+    <div class="info">
+        <span id="span-user">Об аккаунте</span>
+        <h3>Логин</h3>
+        <span>{{ username }}</span>
+        <h3>Почта</h3>
+        <span>{{ email }}</span>
+        <h3>Дата регистрации</h3>
+        <span>{{ date_joined|date:"d/m/Y" }}</span>
+    </div>
+    <div class="buttons" id="near">
+        <a class="button" id="second-btn" href="{% url 'change_password' %}">Смена пароля</a> 
+        <a class="button" id="second-btn" href="{% url 'logout' %}" style="background-color: #970000; border: none;">Выйти с аккаунта</a> 
+        <a class="button" id="second-btn" href="{% url 'main' %}">Назад</a> 
+    </div>
+</div>
+
+
+
+<script>
+    // Alert
+    {% if messages %}
+        window.onload = function() {
+            {% for message in messages %}
+                Swal.fire({
+                    title: 'Сообщение',
+                    text: "{{ message }}",
+                    icon: 'info',
+                    confirmButtonText: 'ОК'
+                });
+            {% endfor %}
+        }
+    {% endif %}
+    document.addEventListener('DOMContentLoaded', function() {
+    const body = document.body;
+    body.classList.remove('swal2-height-auto');
+});
+</script>
+
+{% endblock %}
+

@@ -1,51 +1,29 @@
-{% extends 'auction/base_main.html' %}
-
+{% extends 'auction/form_base.html' %}
 {% block header %}
-
-
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'auction/css/main.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'auction/css/profile_user.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'auction/css/forms.css' %}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="icon" href="/static/auction/images/html/favico.png" type="image/x-icon">
+<title>Настройки</title>
 {% endblock %}
-
 {% block body %} 
-<div class="form_profile">
-    <span style="font-size: 20px; color: white;">Личные данные</span>
-    <div class="container">
-        <span>Логин: {{ username }}</span>
-    </div>
 
-    <div class="container">
-        <span>Почта: {{ email }}</span>
-    </div>
+<style type="text/css">
+    body {
+        background-image: url('/static/auction/images/html/back2.jpg');
+        background-size: cover; /* Изображение будет масштабироваться, чтобы покрыть весь элемент */
+        background-repeat: no-repeat; /* Изображение не будет повторяться */
+    }
+</style>
 
-    <form action="{% url 'change_password' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Сменить пароль</button>
-    </form>
-
-    <form action="{% url 'choice_lots' %}" method="post">
-        {% csrf_token %}
-        <button type="submit" style="margin-top: 20px;">Настройка лотов</button>
-    </form>
-
-    <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit" style="margin-top: 20px;">Выйти из аккаунта</button>
-    </form>
-
+<div class="container_form" style="border-radius: 10px;">
+    <a class="button" href="{% url 'choice_lots' %}" style="margin-top: 100px;">Настройка лотов</a>
+    <a class="button" id="second-btn" href="{% url 'main' %}">Назад</a> 
 </div>
-
-
-<header>
-	<a href="http://127.0.0.1:8000/auction/main"><button type="submit">На главную</button></a>
-</header>
 
 <script>
     const checkboxes = document.querySelectorAll('.item-checkbox');
-
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
             const checkedCount = document.querySelectorAll('.item-checkbox:checked').length;
@@ -70,7 +48,7 @@
         });
     });
 
-    // Обработка сообщений из Django
+    // Alert
     {% if messages %}
         window.onload = function() {
             {% for message in messages %}
@@ -84,6 +62,4 @@
         }
     {% endif %}
 </script>
-
-
 {% endblock %}

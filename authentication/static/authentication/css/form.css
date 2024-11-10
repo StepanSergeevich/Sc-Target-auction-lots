@@ -2,21 +2,54 @@ body {
     background-image: url('path/to/your/background-image.jpg'); /* Укажите путь к вашему изображению */
     background-size: cover;
     background-position: center;
-    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+	font-family: helvetica !important;
+	font-style: normal !important; 
+	font-weight: normal !important;
 }
 
 .container {
+    display: grid;
+    min-height: 350px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.9); /* Полупрозрачный белый фон */
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     width: 300px; /* Ширина формы */
+}
+
+.button {
+	width: 100%;
+	font-size: 15px !important;
+    margin: 5px 0px;
+    cursor: pointer;
+	border-radius: 5px;
+	background-color: #2b75ff;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+    padding: 15px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+.button:active {
+	transform: scale(0.95) !important;
+}
+
+.button:focus {
+	outline: none !important;
+}
+
+.button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
 }
 
 a {

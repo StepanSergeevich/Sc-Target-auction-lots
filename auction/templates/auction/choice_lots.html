@@ -1,37 +1,44 @@
-{% extends 'auction/base_main.html' %}
-
+{% extends 'auction/form_base.html' %}
 {% block header %}
-
-
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'auction/css/main.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'auction/css/profile_user.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'auction/css/forms.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'auction/css/choice_lots.css' %}">
+<link rel="icon" href="/static/auction/images/html/favico.png" type="image/x-icon">
+<title>Настройка лотов</title>
 {% endblock %}
-
 {% block body %} 
 
-<form method="post">
-    {% csrf_token %}
-    <div class="form_profile">
-        <span style="font-size: 20px; color: white;">Личные данные</span>
-        <div>
-        {% for id, name in checkbox_values.items %}
-            <label class="lns-checkbox ml-2">
-                <input type="checkbox" name="selected_items" value="{{ id }}" class="item-checkbox"
-                    {% if id in selected_items %}checked{% endif %}>
-                <span>{{ name }}</span>
-            </label>
-        {% endfor %}
-        </div>
-        <button type="submit" name="choiced">Подтвердить изменения</button>
-    </div>
-</form>
+<style type="text/css">
+    body {
+        height: 100vh; /* Высота на весь экран */
+        margin: 0; /* Убираем отступы */
+        background-image: url('/static/auction/images/html/back2.jpg');
+        background-size: cover; /* Изображение будет масштабироваться, чтобы покрыть весь элемент */
+        background-repeat: no-repeat; /* Изображение не будет повторяться */
+    }
 
-<header>
-	<a href="http://127.0.0.1:8000/auction/main"><button type="submit">На главную</button></a>
-    <a href="http://127.0.0.1:8000/auction/profile_user"><button type="submit">Настройки профиля</button></a>
-</header>
+</style>
+
+<div class="container_items_choice">
+    <form method="post">
+        {% csrf_token %}
+            <div class="checkboxes">
+            <span class="name_items_check">БАРТЕР</span>
+            {% for id, name in checkbox_values.items %}
+                <label class="lns-checkbox ml-2">
+                    <input type="checkbox" name="selected_items" value="{{ id }}" class="item-checkbox"
+                        {% if id in selected_items %}checked{% endif %}>
+                    <span>{{ name }}</span>
+                </label>
+            {% endfor %}
+            </div>
+            <div class="button_div">
+                <button type="submit" name="choiced" class="button" id="but" style="margin-top: 50px;">Подтвердить изменения</button>
+                <a class="button" style="margin-bottom: 50px;" id="second-btn" href="{% url 'settings' %}">назад</a> 
+            </div>
+    </form>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     const checkboxes = document.querySelectorAll('.item-checkbox');

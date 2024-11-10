@@ -22,22 +22,31 @@ def logout_view(request):
 
 
 # Настройки профиля
-def profile_user(request):
-    username = request.user.username
-    email = request.user.email
-    context = {'username': username, 'email': email}
-    return render(request, 'auction/profile_user.html', context)
+def settings(request):
+    return render(request, 'auction/settings.html')
 
+# Главная страница
+def main(request):
+    return render(request, 'auction/main.html')
+
+def info_user(request):
+    context = {
+        'username': request.user,
+        'email': request.user.email,
+        'date_joined': request.user.date_joined, 
+    }
+    return render(request, 'auction/info_user.html', context = context)
 
 # Настройки вывода Лотов
 def choice_lots(request):
+
     if request.method == 'POST' and 'choiced' in request.POST:
         
         try:
             selected_items = request.POST.getlist('selected_items')
             ClientSelection.objects.update_or_create(client_id = request.user, defaults={'selected_items': selected_items})
             messages.success(request, 'Список лотов изменён!')
-            return render(request, 'auction/profile_user.html', context={'username': request.user.email, 'email': request.user.username})
+            return render(request, 'auction/settings.html', context={'username': request.user.email, 'email': request.user.username})
         
         except:
             return render(request, 'auction/fail.html')
@@ -51,7 +60,7 @@ def choice_lots(request):
 # Смена пароля
 class change_password(PasswordChangeView):
     template_name = 'auction/change_password.html'
-    success_url = reverse_lazy('profile_user')
+    success_url = reverse_lazy('info_user')
 
     def form_valid(self, form):
         user = form.save()
@@ -94,7 +103,7 @@ async def fetch_lots_data(request):
     async def fetch_lots_price(item_id):
         client = ApiClient(item_id)
         price_info = await client.get_item_price()
-        return {**price_info, 'item_id': LIST_ITEMS[item_id], 'img_src':f"../../static/auction/images/{item_id}.png"}
+        return {**price_info, 'item_id': LIST_ITEMS[item_id], 'img_src':f"../../static/auction/images/items/{item_id}.png"}
 
     tasks = [fetch_lots_price(item_id) for item_id in item_ids]
     info_items_lots = await asyncio.gather(*tasks)
@@ -106,8 +115,3 @@ async def fetch_lots_data(request):
         return JsonResponse(lots, safe=False)
     
     return render(request, 'auction/fail.html')
-
-
-# Главная страница
-def main(request):
-    return render(request, 'auction/main.html')

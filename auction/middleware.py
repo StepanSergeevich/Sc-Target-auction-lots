@@ -7,7 +7,7 @@ class LoginRequiredMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if not request.user.is_authenticated and request.path in ['/auction/main/', '/auction/profile_user/']:
+        if not request.user.is_authenticated and request.path in ['/auction/main/', '/auction/settings/']:
             return redirect('http://127.0.0.1:8000/auth/authentication/')
         
         if request.user.is_authenticated and request.path in ['/auth/authentication/', '/auth/confirmation/']:

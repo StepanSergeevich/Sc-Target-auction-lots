@@ -22,7 +22,6 @@
 
 
 body {
-  font-family: 'Exo 2', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;  
@@ -33,10 +32,12 @@ body {
 
 /* Применяем стили только к элементу с ID site_tag */
 #site_tag {
+  cursor: default;
   font-family: sans-serif;
   font-size: 1.6rem;
   font-weight: 200;
   font-style: italic;
+  background: linear-gradient(45deg, #003392, #00a2ff); /* Градиентный фон */
   color: black;
   padding: 1.5rem;
   border: 0.4rem solid #fff;
@@ -63,8 +64,8 @@ body {
 @keyframes flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
         text-shadow:
-            -0.2rem -0.2rem 1rem #fff,
-            0.2rem 0.2rem 1rem #fff,
+            -0.2rem -0.2rem 1rem #09c5b5,
+            0.2rem 0.2rem 1rem #016881,
             0 0 2rem var(--neon-text-color),
             0 0 4rem var(--neon-text-color),
             0 0 6rem var(--neon-text-color),
@@ -87,31 +88,27 @@ body {
 }
 
 body {
-	background-image: url('/static/authentication/images/background/aboba.jpg');
-    background-size: cover; /* Изображение будет масштабироваться, чтобы покрыть весь элемент */
-    background-repeat: no-repeat; /* Изображение не будет повторяться */
+	font-family: helvetica !important;
+	font-style: normal !important; 
+	font-weight: normal !important;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
 	height: 80vh;
 	margin: -20px 0 50px;
 }
 
 h1 {
-	font-family: 'Dancing Script', cursive;
 	font-weight: bold;
 	margin: 0;
 }
 
 h2 {
-	font-family: 'Dancing Script', cursive;
 	text-align: center;
 }
 
 p {
-	font-family: 'Dancing Script', cursive;
 	font-size: 14px;
 	font-weight: 100;
 	line-height: 20px;
@@ -120,12 +117,10 @@ p {
 }
 
 span {
-	font-family: 'Dancing Script', cursive;
 	font-size: 12px;
 }
 
 a {
-	font-family: 'Dancing Script', cursive;
 	color: #333;
 	font-size: 14px;
 	text-decoration: none;
@@ -137,7 +132,6 @@ a {
 }
 
 button {
-	font-family: 'Dancing Script', cursive;
     cursor: pointer;
 	border-radius: 5px;
 	border: 1px solid #2b75ff;
@@ -150,6 +144,36 @@ button {
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
+}
+
+.button {
+	width: 100%;
+	font-size: 15px !important;
+    margin: 5px 5px;
+    cursor: pointer;
+	border-radius: 5px;
+	background-color: #2b75ff;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+    padding: 15px 0px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+    
+}
+
+.button:active {
+	transform: scale(0.95);
+}
+
+.button:focus {
+	outline: none;
+}
+
+.button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
 }
 
 button:active {

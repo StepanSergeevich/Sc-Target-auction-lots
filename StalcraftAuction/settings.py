@@ -34,7 +34,7 @@ DATABASES = {
         'NAME': 'postgres',  
         'USER': 'postgres',        
         'PASSWORD': '123', 
-        'HOST': 'localhost',          
+        'HOST': 'localhost',   # db - Для docker'a        
         'PORT': '5432',                 
     }
 }

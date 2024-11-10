@@ -1,0 +1,98 @@
+.form-user span{
+    color: white;
+}
+
+.form-user{
+    display: grid;
+}
+
+h3{
+    color: white;
+}
+
+span{
+    text-align: center;
+}
+
+#span-user{
+    font-size: 25px;
+    color: white;
+}
+
+.buttons{
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+    background-color: rgba(24, 24, 24, 0.5);
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    flex-direction: column; /* Располагаем элементы вертикально */
+    margin-top: 25px;
+    border-radius: 12px; /* Закругленные углы */
+    padding: 20px;
+    padding-right: 30px; /* Внутренние отступы */
+    max-width: 400px; /* Максимальная ширина блока */
+    font-family: 'Arial', sans-serif; /* Шрифт для текста */
+}
+
+.form-user a{
+    color: white;
+    text-align: center;
+}
+
+.info {
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+    background-color: rgba(24, 24, 24);
+    border-radius: 12px; /* Закругленные углы */
+    padding: 20px; /* Внутренние отступы */
+    max-width: 400px; /* Максимальная ширина блока */
+    margin: 20px auto; /* Центрирование блока */
+    font-family: 'Arial', sans-serif; /* Шрифт для текста */
+}
+
+.info h3 {
+    text-align: center;
+    cursor: default; /* Отключаем изменение курсора */
+    font-size: 1.2em; /* Размер шрифта заголовков */
+    color: #59a6ab; /* Цвет текста заголовков */
+    margin-bottom: 10px; /* Отступ снизу */
+    font-weight: 600; /* Полужирный шрифт для заголовков */
+    border-bottom: 2px solid #007bff; /* Подчеркивание заголовков */
+    padding-bottom: 5px; /* Отступ снизу заголовка */
+}
+
+body{
+    font-family: helvetica !important;
+	font-style: normal !important; 
+	font-weight: normal !important;
+}
+
+.info span {
+    display: block; /* Каждый элемент на новой строке */
+    font-size: 1em; /* Размер шрифта для текста */
+    color: #555; /* Цвет текста */
+    margin-bottom: 15px; /* Отступ снизу */
+    padding: 10px; /* Внутренние отступы для текста */
+    border-radius: 5px; /* Закругленные углы для текста */
+    cursor: pointer;
+}
+
+.info span:hover {
+    background-color: #e0f7fa; /* Изменение фона при наведении */
+}
+
+#span-user:hover{
+    font-size: 0px;
+    height: 50px;
+    background-size: cover; /* Изображение будет обрезано, чтобы заполнить контейнер */
+    background-position: center; /* Центрируем изображение */
+    overflow: hidden; /* Скрываем часть изображения, выходящую за пределы контейнера */
+    background-image: url('/static/auction/images/html/ziv.png') !important;
+    
+}
+
+#span-user {
+    font-size: 25px; /* Начальный размер шрифта */
+    height: 50px; /* Начальная высота */
+    background-size: cover; /* Изображение будет обрезано, чтобы заполнить контейнер */
+    background-position: center; /* Центрируем изображение */
+    overflow: hidden; /* Скрываем часть изображения, выходящую за пределы контейнера */
+    transition: font-size 0.3s ease, height 0.3s ease; /* Плавный переход для font-size и height */
+}

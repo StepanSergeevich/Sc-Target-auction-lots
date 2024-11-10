@@ -1,54 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  
   <title>Восстановление пароля</title>
   {% load static %}
-  <!-- Favicons -->
+  <link rel="icon" href="/static/authentication/images/background/favico.png" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="{% static 'authentication/css/form.css' %}">
-
 </head>
 
 <body>
 
     <div class="container">
-
         <h2 class="form-email-h2">Введите код подстверждения</h2>
-        <div class="form-wrap">
-          
+        <div class="form-wrap">   
             <form method="POST" action="{% url 'confirmation' %}">
                 {% csrf_token %}
                 <input type="text" name="code" required>
                 <button type="submit" name="verify_code" style="margin-top: 20px;">Подтвердить</button>
-                <div class="error" style=" border-radius: 25px; padding: 25px; height: 50px;">
-                
+                <div class="error" style=" border-radius: 25px; padding: 25px; height: 50px;">               
                     {% for message in messages %}
                         {% if 'verifity_error' in message.tags %}
                             <span style="color: red; margin-top: 25px; font-size: 20px;">{{ message }}</span>
                         {% endif %}
-                    {% endfor %}
-                    
-                    
+                    {% endfor %}                           
             </form>
-            <button class="btn"><i class="fa fa-facebook"></i><a href="{% url 'authentication' %}">Назад к авторизации</a></button>
-
+            <a class="button" id="second-btn" href="{% url 'password_reset' %}">Восстановление пароля</a> 
     </div>
+
     <footer>
         <p>
             Created with <i class="fa fa-heart"></i> by
             <a target="_blank" href="https://github.com/StepanSergeevich">Arhimiel</a>
-            
         </p>
-    </footer>     
-</body>
+    </footer>  
 
+</body>
 </html>
 
-
-</div>
 
 
