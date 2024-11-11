@@ -33,7 +33,7 @@ DISCOUNT_GREEN = 0.60  # Ниже средней цены на 40%
 }
 Остальные поля заполняются данными вашей БД.
 
-3. Добавь свой токен API STALCRAFT в переменную API_KEY в главном приложении django в файле settgins.py
-[Документация](https://eapi.stalcraft.net)
+3. Добавь свой токен [API STALCRAFT](https://eapi.stalcraft.net) в переменную API_KEY в главном приложении django в файле settgins.py
+
 
 4. В docker-compose.yml так же необходимо заполнить данные своей БД. 
