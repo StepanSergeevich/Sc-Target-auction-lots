@@ -18,7 +18,9 @@ average_price = int(sum(price_one_item) / len(price_one_item)) * 0.90
 
 # Метод get_item_price класса ApiClient
 Переменные для изменения процента выгодности лота
+
 DISCOUNT_YELLOW = 0.77  # Ниже средней цены на 23%
+
 DISCOUNT_GREEN = 0.60  # Ниже средней цены на 40%
 
 ## Getting started
