@@ -27,4 +27,8 @@ DISCOUNT_GREEN = 0.60  # Ниже средней цены на 40%
 
 3. В docker-compose.yml так же необходимо заполнить данные своей БД. 
 
+<<<<<<< HEAD
 2. Start Docker in project
+=======
+2. Start Docker in project
+>>>>>>> c690039ba125d61127cdb2704242cedec5e0080e
