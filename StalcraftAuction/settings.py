@@ -31,10 +31,10 @@ SECRET_KEY = 'django-insecure-sjc-9di+c8a9x@-@_svh+q*6=ts7nih!gq_$hxsrc*^8jfpj0%
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',  
-        'USER': 'postgres',        
-        'PASSWORD': '123', 
-        'HOST': 'localhost',   # db - Для docker'a        
+        'NAME': #,  
+        'USER': #,        
+        'PASSWORD': #, 
+        'HOST': #,      
         'PORT': '5432',                 
     }
 }

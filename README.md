@@ -7,7 +7,9 @@
 
 # Настройка скрипта
 Приложение auction -> scripts -> Api.py:
-average_price = int(sum(price_one_item) / len(price_one_item)) * 0.90 - Изначально высчетанная средняя цена уменьшается на 10%
+
+Изначально высчетанная средняя цена уменьшается на 10%
+average_price = int(sum(price_one_item) / len(price_one_item)) * 0.90 
 Это сделано в целях исключения влияния сверх-дорогих предложений на рынке.
 
 # Метод get_item_price класса ApiClient
@@ -25,10 +27,6 @@ DISCOUNT_GREEN = 0.60  # Ниже средней цены на 40%
 }
 Остальные поля заполняются данными вашей БД.
 
-3. В docker-compose.yml так же необходимо заполнить данные своей БД. 
+3. Добавь свой токен API STALCRAFT в переменную API_KEY в главном приложении django в файле settgins.py
 
-<<<<<<< HEAD
-2. Start Docker in project
-=======
-2. Start Docker in project
->>>>>>> c690039ba125d61127cdb2704242cedec5e0080e
+4. В docker-compose.yml так же необходимо заполнить данные своей БД. 
