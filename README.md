@@ -26,7 +26,7 @@ DISCOUNT_GREEN = 0.60  # Ниже средней цены на 40%
 ## Getting started
 [DATABASE: Postgresql, Reddis, ENV: Poetry]
 
-1. Download [Docker]([https://eapi.stalcraft.net](https://www.docker.com)).
+1. Download [Docker](https://www.docker.com).
 
 2. DATABASES = {
     'HOST': 'db', # Для запуска докера необходимо указать db.
